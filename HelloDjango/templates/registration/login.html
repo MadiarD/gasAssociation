@@ -1,0 +1,202 @@
+<!doctype html>
+{% load static %}
+{% include 'includes/head.html' %}
+
+{% if lng == 'ru' %}
+
+        <!-- Navbar Area End -->
+
+        <!-- Page Title Start -->
+        <section class="page-title title-bg12">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Вход</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page' %}">Главная</a>
+                        </li>
+                        <li>Вход</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+
+        <!-- Sign In Section Start -->
+        <div class="signin-section ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+                        <form class="signin-form" method="post">
+                            {% csrf_token %}
+                            {% comment %} {{ form.as_p }} {% endcomment %}
+                            <div class="form-group">
+                              <label>Логин</label>
+                              <input type="text" name="username" class="form-control" placeholder="Напишите ваш логин" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input type="password" name="password" class="form-control" placeholder="Напишите пароль" required>
+                            </div>
+
+                            <div class="signin-btn text-center">
+                                <button type="submit">Войти</button>
+                            </div>
+<!-- 
+                            <div class="other-signin text-center">
+                                <span>Or sign in with</span>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-google'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-linkedin'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+                            <div class="create-btn text-center">
+                                <p>Все еще нет аккаунта?
+                                    <a href="{% url 'register' %}">
+                                        Создать аккаунт
+                                        <i class='bx bx-chevrons-right bx-fade-right'></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+     
+
+{%else%}
+
+
+        <!-- Navbar Area End -->
+
+        <!-- Page Title Start -->
+        <section class="page-title title-bg12">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Кіру</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page' %}">Басты бет</a>
+                        </li>
+                        <li>Кіру</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+
+        <!-- Sign In Section Start -->
+        <div class="signin-section ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+                        <form class="signin-form" method="post">
+                            {% csrf_token %}
+                            {% comment %} {{ form.as_p }} {% endcomment %}
+                            <div class="form-group">
+                              <label>Логин</label>
+                              <input type="text" name="username" class="form-control" placeholder="Напишите ваш логин" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input type="password" name="password" class="form-control" placeholder="Напишите пароль" required>
+                            </div>
+
+                            <div class="signin-btn text-center">
+                                <button type="submit">Кіру</button>
+                            </div>
+<!-- 
+                            <div class="other-signin text-center">
+                                <span>Or sign in with</span>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-google'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bxl-linkedin'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+                            <div class="create-btn text-center">
+                                <p>Аккаунтыңыз жоқ па?
+                                    <a href="{% url 'register' %}">
+                                        Аккаунты құру
+                                        <i class='bx bx-chevrons-right bx-fade-right'></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+      
+{%endif%}
+
+   <!-- Sign In Section End -->
+
+        <!-- Subscribe Section Start -->
+        {% include 'includes/subscribe.html' %}
+        <!-- Subscribe Section End -->
+
+        <!-- Footer Section Start -->
+		{% include 'includes/footer.html' %}
+        <!-- Footer Section End -->
+
+        <!-- Back To Top Start -->
+		<div class="top-btn">
+			<i class='bx bx-chevrons-up bx-fade-up'></i>
+		</div>
+		<!-- Back To Top End -->
+
+		<!-- jQuery first, then Bootstrap JS -->
+		{% include 'includes/indexscript.html' %}
+  	</body>
+</html>

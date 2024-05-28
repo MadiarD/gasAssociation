@@ -1,0 +1,51 @@
+{% load static %}
+
+
+<section class="blog-section pt-100 pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+           <h2>{% if lng == 'ru' %}Последние новости{% elif lng == 'kz' %}Соңғы жаңалықтар{%endif%}</h2>
+            <p>{% if lng == 'ru' %}Оставайтесь в курсе последних событий. Где бы вы ни находились, мы поддерживаем вас в курсе происходящего!{% elif lng == 'kz'%}Соңғы жаңалықтардан хабардар болыңыз. Қай жерде болсаңыз да, біз сізді жаңартып отырамыз!{%endif%}</p>
+        </div>
+
+        <div class="row">
+            
+            {%for i in last_news%}
+            <div class="col-lg-4 col-sm-6">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <a href="/news/{{i.id}}">
+                            <img src="/media/{{i.cover_img}}" alt="blog image">
+                        </a>
+                    </div>
+                    <div class="blog-text">
+                        <ul>
+                            <li>
+                                <i class='bx bxs-user'></i>
+                                {{i.user.username}}
+                            </li>
+                            <li>
+                                <i class='bx bx-calendar'></i>
+                                {{i.date}}
+                            </li>
+                        </ul>
+
+                        <h3>
+                            <a href="/news/{{i.id}}">
+                                {{i.title}}
+                            </a>
+                        </h3>
+                        <p>{{i.sub_title}}</p>
+
+                        <a href='/news/{{i.id}}' class="blog-btn">
+                            {% if lng == 'ru' %}Читать больше{% elif lng == 'kz'%}Ары қарай оқу{%endif%}
+                            <i class='bx bx-plus bx-spin'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {%endfor%}
+        </div>
+    </div>
+</section>

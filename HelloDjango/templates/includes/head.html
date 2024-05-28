@@ -1,0 +1,19 @@
+{%load static%}
+
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+         <title>{% if lng == 'ru' %}Ассоциация газовых хозяйств{% elif lng == 'kz'%}Газ шаруашылығының қауымдастығы{%endif%}</title> 
+		{% include 'includes/link.html' %}
+	</head>
+	
+  	<body>
+		<!-- Pre-loader  -->
+		{%include 'includes/loader.html'%}
+	
+		<!-- Navbar Area Start -->
+		{% include 'includes/navbar.html' %}
+		<!-- Navbar Area End -->

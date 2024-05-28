@@ -1,0 +1,227 @@
+<!doctype html>
+{% load static %}
+{% include 'includes/head.html' %}
+{% if lng == 'ru' %}
+
+
+
+        <!-- Page Title Start -->
+        <section class="page-title title-bg21">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Новости</h2>
+                    <ul>
+                        <li>
+                            <a href="{%url 'home_page'%}">Главная</a>
+                        </li>
+                        <li>Новости</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+
+		<!-- Blog Section Start -->
+		<section class="blog-section blog-style-two pt-100 pb-70">
+			<div class="container">
+				<div class="section-title text-center">
+					<h2>Новости Ассоциации</h2>
+					<p>Оставайтесь в курсе последних событий. Где бы вы ни находились, мы поддерживаем вас в курсе происходящего!</p>
+				</div>
+				<div class="row">
+				{% for i in news%}
+			
+ 
+					<div class="col-lg-4 col-sm-6">
+						<div class="blog-card">
+							<div class="blog-img">
+								<a href="/news/{{i.id}}">
+									<img src="/media/{{i.cover_img}}" alt="blog image">
+								</a>
+							</div>
+							<div class="blog-text">
+								<ul>
+									<li>
+										<i class='bx bxs-user'></i>
+										{{i.user.username}}
+									</li>
+									<li>
+										<i class='bx bx-calendar'></i>
+										{{i.date}}
+									</li>
+								</ul>
+
+								<h3>
+									<a href="/news/{{i.id}}">
+										{{i.title}}
+									</a>
+								</h3>
+								<p>{{i.sub_title}}</p>
+
+								<a href='/news/{{i.id}}' class="blog-btn">
+									Читать больше
+									<i class='bx bx-plus bx-spin'></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+						
+				{%endfor%}
+				</div>
+					
+                
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                <i class='bx bx-chevrons-left bx-fade-left'></i>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                       
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class='bx bx-chevrons-right bx-fade-right'></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+			</div>
+		</section>
+		<!-- Blog Section End -->        
+
+ 		<!-- Footer Section Start -->
+		 {% include 'includes/footer.html' %}
+		 <!-- Footer Section End -->
+ 
+		 <!-- Back To Top Start -->
+		 <div class="top-btn">
+			 <i class='bx bx-chevrons-up bx-fade-up'></i>
+		 </div>
+		 <!-- Back To Top End -->
+ 
+		 <!-- jQuery first, then Bootstrap JS -->
+ 
+		 {% include 'includes/indexscript.html' %}	
+
+  	</body>
+</html>
+
+{% elif lng == 'kz' %}
+
+ <!-- Page Title Start -->
+ <section class="page-title title-bg21">
+	<div class="d-table">
+		<div class="d-table-cell">
+			<h2>Жаңалықтар</h2>
+			<ul>
+				<li>
+					<a href="{%url 'home_page'%}">Басты бет</a>
+				</li>
+				<li>Жаңалықтар</li>
+			</ul>
+		</div>
+	</div>
+	<div class="lines">
+		<div class="line"></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</div>
+</section>
+<!-- Page Title End -->
+
+<!-- Blog Section Start -->
+<section class="blog-section blog-style-two pt-100 pb-70">
+	<div class="container">
+		<div class="section-title text-center">
+			<h2>Қауымдастық жаңалықтары</h2>
+			<p>Соңғы жаңалықтардан хабардар болыңыз. Қай жерде болсаңыз да, біз сізді жаңартып отырамыз!"</p>
+		</div>
+		<div class="row">
+		{% for i in news%}
+	
+
+			<div class="col-lg-4 col-sm-6">
+				<div class="blog-card">
+					<div class="blog-img">
+						<a href="/news/{{i.id}}">
+							<img src="/media/{{i.cover_img}}" alt="blog image">
+						</a>
+					</div>
+					<div class="blog-text">
+						<ul>
+							<li>
+								<i class='bx bxs-user'></i>
+								{{i.user.username}}
+							</li>
+							<li>
+								<i class='bx bx-calendar'></i>
+								{{i.date}}
+							</li>
+						</ul>
+
+						<h3>
+							<a href="/news/{{i.id}}">
+								{{i.title}}
+							</a>
+						</h3>
+						<p>{{i.sub_title}}</p>
+
+						<a href='/news/{{i.id}}' class="blog-btn">
+							Ары қарай оқу
+							<i class='bx bx-plus bx-spin'></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+				
+		{%endfor%}
+		</div>
+			
+		
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item disabled">
+					<a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+						<i class='bx bx-chevrons-left bx-fade-left'></i>
+					</a>
+				</li>
+				<li class="page-item"><a class="page-link active" href="#">1</a></li>
+			   
+				<li class="page-item">
+					<a class="page-link" href="#">
+						<i class='bx bx-chevrons-right bx-fade-right'></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</section>
+<!-- Blog Section End -->        
+
+ <!-- Footer Section Start -->
+ {% include 'includes/footer.html' %}
+ <!-- Footer Section End -->
+
+ <!-- Back To Top Start -->
+ <div class="top-btn">
+	 <i class='bx bx-chevrons-up bx-fade-up'></i>
+ </div>
+ <!-- Back To Top End -->
+
+ <!-- jQuery first, then Bootstrap JS -->
+
+ {% include 'includes/indexscript.html' %}	
+
+</body>
+</html>
+
+{%endif%}
+

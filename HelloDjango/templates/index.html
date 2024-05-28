@@ -1,0 +1,654 @@
+<!doctype html>
+{%load static%}
+{% include 'includes/head.html' %}
+{%if lng == 'ru'%}
+		<!-- Banner Section Start -->
+		<div class="banner-section">
+			<div class="d-table">
+				<div class="d-table-cell">
+					<div class="container"> 
+						<div class="banner-content text-center">
+							<p>Ассоциация газовых хозяйств - ваше главное руководство в мире газа</p>
+							<h2>Добро пожаловать на блог ОЮЛ «Ассоциация газовых хозяйств»</h2>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Banner Section End -->
+
+
+		<!-- Companies Section Start -->
+		<section class="company-section pt-100 pb-70">
+			<div class="container">
+				<div class="section-title">
+					<h2 class="text-center">
+												О Сайте
+											
+					</h2>
+					<p>Сайт ОЮЛ «Ассоциация газовых хозяйств» это не только информационный ресурс, но и способ обратной связи с потребителями услуг в сфере газа и газоснабжения, 
+						а также уникальная возможность в случае возникновения споров, вопросов до обращения в государственные органы, направить свое обращение на данный блог.</p>
+				</div>
+
+			</div>
+		</section>
+		<!-- Companies Section End -->
+
+		<!-- Why Choose Section Start -->
+		<section class="why-choose">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-7 p-0">
+						<div class="why-choose-text pt-100 pb-70">
+							<div class="section-title">
+								<h2 class = "text-center mb-3">О нас</h2>
+								<p style="max-width:700px;">ОЮЛ «Ассоциация газовых хозяйств Алматинской области» была создана в январе 2013 г. Председателем Ассоциации является Нурбаев Молдияр Кылчикович.</p>
+								<p class="mt-3"style="max-width:700px;">Членами Ассоциации являются ТОО «Тауекел-Т», ТОО «Тауекел-Н-Алғабас», ТОО «Таусамалгазмонтаж», ТОО «Обл Газ Сервис», ТОО «Нур Газ Монтаж», ТОО «Тауекел-газ құбыры», ТОО «Береке газ монтаж», ТОО «Узынағаш газ монтаж», ТОО «Жетісу газ монтаж», ТОО «Талғар газ монтаж», ТОО «Ел газ», Филиал «Тауекел-Трейд» ТОО «Тауекел-Т». Данные организации осуществляют деятельность в сфере газа и газоснабжения, а именно:</p>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-sharp fa-solid fa-fire-burner"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Розничную реализацию газа</h5>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-solid fa-gear"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Техническое обслуживание</h5>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-sharp fa-solid fa-file-invoice"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Разработка проектно-сметной документации</h5>
+											
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-solid fa-helmet-safety"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Строительно-монтажные работы</h5>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row counter-area">
+								<div class="col-md-3 col-6">
+										<div class="counter-text">
+										<h2><span>127</span></h2>
+										<p>Job Posted</p>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-6">
+									<div class="counter-text">
+										<h2><span>137</span></h2>
+										<p>Job Filed</p>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-6">
+									<div class="counter-text">
+										<h2><span>180</span></h2>
+										<p>Company</p>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-6">
+									<div class="counter-text">
+										<h2><span>144</span></h2>
+										<p>Members</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-5 p-0">
+						<div class="why-choose-img">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Why Choose Section End -->
+
+		<!-- Candidate Section Start -->
+		<section class="candidate-section pb-100 pt-100">
+			<div class="container">
+				<div class="section-title text-center">
+					<h2>Члены Ассоциации</h2>
+				</div>
+
+				<div class="condidate-slider owl-carousel owl-theme">
+					{%for i in members%}
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="/media/{{i.logo}}" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							{% for j in i.detail.social.all%}
+							<a href="{{j.url}}" target="_blank"><i class='{{j.logo}}'></i></a>
+							{%endfor%}
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">{{i.name}}</a></h3>
+							<ul>
+								
+								<li>
+									<i class='bx bx-location-plus'></i>
+									{{i.detail.address}}            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									{{i.detail.date}}
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					{%endfor%}
+
+					{% comment %} <div class="condidate-item">
+						<div class="candidate-img">
+							<img src="{% static 'assets/img/top-company/tayekel-algabas.png' %}" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Тауекел-Н-Алгабас»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="{% static 'assets/img/top-company/oblgaz.png' %}" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Обл газ сервис»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Тауекел-Т»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Таусамал газ монтаж»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Тауекел газ құбыры»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Береке газ монтаж»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Узынағаш газ монтаж»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Жетісу газ монтаж»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО«Талғар газ монтаж»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="https://krot.info/uploads/posts/2021-03/1614602688_22-p-inna-valter-obrastaem-vranem-art-kartinki-23.jpg" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							<a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+							<a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">ТОО «Ел газ»</a></h3>
+							<ul>
+								<li>
+									<i class='bx bx-location-plus'></i>
+									Адрес            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									Дата
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div> {% endcomment %}
+				
+			</div>
+			</div>
+		</section>
+		<!-- Candidate Section End -->
+{% elif lng == 'kz' %}
+	
+		<!-- Banner Section Start -->
+		<div class="banner-section">
+			<div class="d-table">
+				<div class="d-table-cell">
+					<div class="container"> 
+						<div class="banner-content text-center">
+							<p>Газ қауымдастығы - сіздің газ әлеміндегі басты нұсқауыңыз</p>
+							<h2>«Газ шаруашылықтары қауымдастығы» АӘБ блогына қош келдіңіз</h2>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Banner Section End -->
+
+
+		<!-- Companies Section Start -->
+		<section class="company-section pt-100 pb-70">
+			<div class="container">
+				<div class="section-title">
+					<h2 class="text-center">
+						Сайт туралы
+											
+					</h2>
+					<p>Газ шаруашылығы қауымдастығының сайты ақпараттық ресурс қана емес, сонымен қатар газ және газбен жабдықтау саласындағы қызметтерді тұтынушылармен кері байланыс орнату тәсілі,
+						сондай-ақ мемлекеттік органдарға жүгінер алдында даулар немесе сұрақтар туындаған жағдайда өз өтінішіңізді осы блогқа жіберудің бірегей мүмкіндігі.</p>
+				</div>
+
+			</div>
+		</section>
+		<!-- Companies Section End -->
+
+		<!-- Why Choose Section Start -->
+		<section class="why-choose">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-7 p-0">
+						<div class="why-choose-text pt-100 pb-70">
+							<div class="section-title">
+								<h2 class = "text-center mb-3">Біз туралы</h2>
+								<p style="max-width:700px;">«Алматы облысының газ шаруашылығы қауымдастығы» МКҚК 2013 жылдың қаңтарында құрылды. Қауымдастықтың төрағасы Нұрбаев Молдияр Қылшықұлы.</p>
+								<p class="mt-3"style="max-width:700px;">Қауымдастық мүшелері: «Тәуекел-Т» ЖШС, «Тауекел-Н-Алғабас» ЖШС, «Таусалгазмонтаж» ЖШС, «Обл Газ Сервис» ЖШС, «Нұр Газ Монтаж» ЖШС, «Тауекел-газ Құбыры» ЖШС, «Береке Газ» ЖШС монтажы, «Ұзынағаш газ қондырғысы» ЖШС, ЖШС «Жетісу газ қондырғысы», «Талғар газ қондырғысы» ЖШС, «Ел газ» ЖШС, «Тәуекел-Трейд» филиалы «Тәуекел-Т» ЖШС. Бұл ұйымдар газ және газбен жабдықтау саласында жұмыс істейді, атап айтқанда:</p>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-sharp fa-solid fa-fire-burner"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Газды бөлшек саудада сату</h5>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-solid fa-gear"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Техникалық қызмет көрсету</h5>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-sharp fa-solid fa-file-invoice"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Жобалық-сметалық құжаттаманы әзірлеу</h5>
+											
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="media">
+										<i class="fa-solid fa-helmet-safety"></i>
+										<div class="media-body">
+											<h5 class="mt-0">Құрылыс-монтаж жұмыстары</h5>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row counter-area">
+								<div class="col-md-3 col-6">
+										<div class="counter-text">
+										<h2><span>127</span></h2>
+										<p>Жұмысшылар</p>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-6">
+									<div class="counter-text">
+										<h2><span>137</span></h2>
+										<p>Клиенттер</p>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-6">
+									<div class="counter-text">
+										<h2><span>180</span></h2>
+										<p>Риза клиенттер</p>
+									</div>
+								</div>
+
+								<div class="col-md-3 col-6">
+									<div class="counter-text">
+										<h2><span>144</span></h2>
+										<p>Компаниялар</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-5 p-0">
+						<div class="why-choose-img">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Why Choose Section End -->
+
+		<!-- Candidate Section Start -->
+		<section class="candidate-section pb-100 pt-100">
+			<div class="container">
+				<div class="section-title text-center">
+					<h2>Қауымдастық мүшелері</h2>
+				</div>
+
+				<div class="condidate-slider owl-carousel owl-theme">
+					{%for i in members%}
+					<div class="condidate-item">
+						<div class="candidate-img">
+							<img src="/media/{{i.logo}}" alt="candidate image">
+						</div>
+						<div class="candidate-social">
+							{% for j in i.detail.social.all%}
+							<a href="{{j.url}}" target="_blank"><i class='{{j.logo}}'></i></a>
+							{%endfor%}
+						</div>
+						<div class="candidate-text">
+							<h3><a href="candidate-details.html">{{i.name}}</a></h3>
+							<ul>
+								
+								<li>
+									<i class='bx bx-location-plus'></i>
+									{{i.detail.address}}            
+								</li>
+							</ul>
+
+							<div class="bottom-text">
+								<p>
+									<i class='bx bx-calendar'></i>
+									{{i.detail.date}}
+								</p>
+								<a href="#">
+									<i class="fa-solid fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					{%endfor%}
+
+					
+			</div>
+			</div>
+		</section>
+		
+	{%endif%}
+	{% include 'includes/end.html' %}		
+
+  	</body>
+</html>

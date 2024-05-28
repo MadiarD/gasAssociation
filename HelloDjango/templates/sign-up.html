@@ -1,0 +1,208 @@
+<!doctype html>
+{% load static %}
+{% include 'includes/head.html' %}
+{% if lng == 'ru' %}
+
+
+
+        <!-- Page Title Start -->
+        <section class="page-title title-bg13">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Регистрация</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page' %}">Главная</a>
+                        </li>
+                        <li>Регистрация</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+
+        <!-- Sign up Section Start -->
+        <div class="signup-section ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+                        <form class="signup-form" method="post">
+                            {% csrf_token %}
+                            {% comment %} {{form}} {% endcomment %}
+                            <div class="form-group">
+                                
+                              
+                                <label>Логин </label>
+    
+                                <input type="text" name = "username" class="form-control" placeholder="Введите логин" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Почта </label>
+                                <input type="email" name = "email" class="form-control" placeholder="Введите почту" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Пароль </label>
+                                <input type="password" name = "password1" class="form-control" placeholder="Введите пароль" required id ="password1">
+                            </div>
+                            <div class="form-group">
+                                <label>Повторите пороль </label>
+                                <input type="password" name = "password2" class="form-control" placeholder="Повторите пороль" required id ="password2">
+                            </div>
+                            <div class = "error d-flex justify-content-center"></div>
+                            <div class="signup-btn text-center">
+                                <button type="submit" id = "submit" value = "Register">Зарегистрироваться</button>
+                            </div>
+
+                            <!-- <div class="other-signup text-center">
+                                <span>или зарегистрируйтесь с</span>
+                                <ul>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-telegram'></i></a>
+                        
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                        
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+                            <div class="create-btn text-center">
+                                <p>
+                                    Уже есть аккаунт?
+                                    <a href="{% url 'login' %}">
+                                        Вход
+                                        <i class='bx bx-chevrons-right bx-fade-right'></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up Section End -->
+
+        
+		{% include 'includes/end.html' %}		
+
+  	</body>
+</html>
+
+{% elif lng == 'kz'%}
+
+
+
+
+        <!-- Page Title Start -->
+        <section class="page-title title-bg13">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Тіркеу</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page' %}">Басты бет</a>
+                        </li>
+                        <li>Тіркеу</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+
+        <!-- Sign up Section Start -->
+        <div class="signup-section ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
+                        <form class="signup-form" method="post">
+                            {% csrf_token %}
+                            {% comment %} {{form}} {% endcomment %}
+                            <div class="form-group">
+                                
+                              
+                                <label>Логин </label>
+    
+                                <input type="text" name = "username" class="form-control" placeholder="Введите логин" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Пошта </label>
+                                <input type="email" name = "email" class="form-control" placeholder="Введите почту" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Пароль </label>
+                                <input type="password" name = "password1" class="form-control" placeholder="Введите пароль" required id ="password1">
+                            </div>
+                            <div class="form-group">
+                                <label>Құпия сөзді қайталаңыз </label>
+                                <input type="password" name = "password2" class="form-control" placeholder="Повторите пороль" required id ="password2">
+                            </div>
+                            <div class = "error d-flex justify-content-center"></div>
+                            <div class="signup-btn text-center">
+                                <button type="submit" id = "submit" value = "Register">Тіркелу</button>
+                            </div>
+
+                            <!-- <div class="other-signup text-center">
+                                <span>или зарегистрируйтесь с</span>
+                                <ul>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-telegram'></i></a>
+                        
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                        
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                                    </li>
+                                </ul>
+                            </div> -->
+
+                            <div class="create-btn text-center">
+                                <p>
+                                    Аккауттыңыз бар ма?
+                                    <a href="{% url 'login' %}">
+                                        Кіру
+                                        <i class='bx bx-chevrons-right bx-fade-right'></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up Section End -->
+
+        
+		{% include 'includes/end.html' %}		
+
+  	</body>
+</html>
+{%endif%}

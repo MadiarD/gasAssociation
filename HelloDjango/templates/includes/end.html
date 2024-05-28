@@ -1,0 +1,54 @@
+{%load static%}
+<script>
+
+function fetchNotifications() {
+    fetch('/notifications/get/')
+    .then(response => response.json())
+    .then(data => {
+       
+        data.forEach(notification => {
+
+            
+            if (Notification.permission === "granted") {
+                new Notification(notification.message);
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        new Notification(notification.message);
+                    }
+                });
+            }
+        });
+    })
+    .finally(() => {
+        // Повторяем запрос через 5 секунд
+        setTimeout(fetchNotifications, 5000);
+    });
+}
+
+// Запрашиваем уведомления при загрузке страницы
+document.addEventListener('DOMContentLoaded', (event) => {
+    if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+        Notification.requestPermission();
+    }
+    fetchNotifications();
+});
+
+</script>
+		<!-- Blog Section Start -->
+		{% include 'includes/lastnews.html' %}
+		<!-- Blog Section End -->
+
+		<!-- Footer Section Start -->
+		{% include 'includes/footer.html' %}
+		<!-- Footer Section End -->
+
+		<!-- Back To Top Start -->
+		<div class="top-btn">
+			<i class='bx bx-chevrons-up bx-fade-up'></i>
+		</div>
+		<!-- Back To Top End -->
+
+		<!-- jQuery first, then Bootstrap JS -->
+
+		{% include 'includes/indexscript.html' %}

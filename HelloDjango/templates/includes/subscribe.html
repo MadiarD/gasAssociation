@@ -1,0 +1,59 @@
+{% load static %}
+{% if lng == 'ru' %}
+
+<section class="subscribe-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="section-title">
+                    <h2>Получайте уведомления о новых новостях</h2>
+                    <p>Подпишитесь и получайте уведомления о важных событиях</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <form class="newsletter-form"  method="post" action="{%url 'subscribe' %}">
+                    {% csrf_token %}
+                    <input type="email" class="form-control" placeholder="Оставьте свою почту" name="email" required autocomplete="off">
+
+                    <button class="default-btn sub-btn" type="submit">
+                        Подписаться
+                    </button>
+
+                    <div id="validator-newsletter" class="form-result"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% elif lng == 'kz'%}
+
+
+
+<section class="subscribe-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="section-title">
+                    <h2>Жаңа жаңалықтардан хабардар болыңыз</h2>
+                    <p>Жазылыңыз және маңызды оқиғалар туралы хабарландырулар алыңыз</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <form class="newsletter-form"  method="post" action="{%url 'subscribe' %}">
+                    {% csrf_token %}
+                    <input type="email" class="form-control" placeholder="Оставьте свою почту" name="email" required autocomplete="off">
+
+                    <button class="default-btn sub-btn" type="submit">
+                        Жазылу
+                    </button>
+
+                    <div id="validator-newsletter" class="form-result"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{%endif%}

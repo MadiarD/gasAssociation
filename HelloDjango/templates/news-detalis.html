@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zxx">
+    {%load static%}
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        {% include 'includes/link.html'%}
+        
+    </head>
+
+    <body>
+        
+        <!-- Pre-loader Start -->
+		{%include 'includes/loader.html'%}
+		
+        <!-- Navbar Area Start -->
+        {%include 'includes/navbar.html'%}
+
+        {%if lng == 'ru'%}
+        <!-- Page Title Start -->
+        <section class="page-title title-bg22">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Детали</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page'%}">Главная</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'news'%}">Новости</a>
+                        </li>
+                        <li>Детали</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+        
+		<!-- Blog Details Section Start -->
+        
+        <section class="blog-details-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                
+
+                        <div class="blog-widget">
+                            <h3>Последние новости</h3>
+                            {%for i in last_news%}
+                            <article class="popular-post ">
+                                <a href="/news/{{i.id}}" class="blog-thumb">
+                                    <img src="/media/{{i.cover_img}}" alt="blog image">
+                                </a>
+
+                                <div class="info">
+                                    <time datetime="2021-04-08">{{i.date}}</time>
+                                    <h4>
+                                        <a href="/news/{{i.id}}">{{i.title}}</a>
+                                    </h4>                                
+                                </div>
+                            </article>
+                            {%endfor%}
+                            
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-8">
+                        <div class="blog-dedails-text">
+                            <div class="blog-details-img">
+                                <img src="/media/{{news.cover_img}}" alt="blog details image">
+                            </div>
+
+                            <div class="blog-meta">
+                                <ul>
+									<li>
+										<i class='bx bxs-user'></i>
+										{{news.user.username}}
+									</li>
+									<li>
+										<i class='bx bx-calendar'></i>
+										{{news.date}}
+									</li>
+								</ul>
+                            </div>
+
+                            
+                            {%for i in news.news_details.all%}
+                            {%if i.title%}
+                                <h3 class="post-title">{{i.title}}</h3>
+                            {%endif%}
+                            {%if i.text %}
+                                <p>{{i.text}}</p>
+                            {%endif%}
+                            {%if i.img%}
+                                <img src="/media/{{i.img}}" class="details-inner-img" alt="blog details image">
+                            {%endif%}
+                            {%endfor%}
+                           
+
+                           
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {%elif lng == 'kz'%}
+        <!-- Page Title Start -->
+        <section class="page-title title-bg22">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Толығырақ</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'home_page'%}">Басты бет</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'news'%}">Жаңалықтар</a>
+                        </li>
+                        <li>Толығырақ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+      
+		<!-- Blog Details Section Start -->
+        
+        <section class="blog-details-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                
+
+                        <div class="blog-widget">
+                            <h3>Соңғы Жаңалықтар</h3>
+                            {%for i in last_news%}
+                            <article class="popular-post ">
+                                <a href="/news/{{i.id}}" class="blog-thumb">
+                                    <img src="/media/{{i.cover_img}}" alt="blog image">
+                                </a>
+
+                                <div class="info">
+                                    <time datetime="2021-04-08">{{i.date}}</time>
+                                    <h4>
+                                        <a href="/news/{{i.id}}">{{i.title}}</a>
+                                    </h4>                                
+                                </div>
+                            </article>
+                            {%endfor%}
+                            
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-8">
+                        <div class="blog-dedails-text">
+                            <div class="blog-details-img">
+                                <img src="/media/{{news.cover_img}}" alt="blog details image">
+                            </div>
+
+                            <div class="blog-meta">
+                                <ul>
+									<li>
+										<i class='bx bxs-user'></i>
+										{{news.user.username}}
+									</li>
+									<li>
+										<i class='bx bx-calendar'></i>
+										{{news.date}}
+									</li>
+								</ul>
+                            </div>
+
+                            
+                            {%for i in news.news_details.all%}
+                            {%if i.title%}
+                                <h3 class="post-title">{{i.title}}</h3>
+                            {%endif%}
+                            {%if i.text %}
+                                <p>{{i.text}}</p>
+                            {%endif%}
+                            {%if i.img%}
+                                <img src="/media/{{i.img}}" class="details-inner-img" alt="blog details image">
+                            {%endif%}
+                            {%endfor%}
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- Blog Details Section End -->        
+
+        {%endif%}
+
+        {% include 'includes/subscribe.html' %}
+
+        <!-- Footer Section Start -->
+		{%include 'includes/footer.html'%}
+
+        <!-- Back To Top Start -->
+		<div class="top-btn">
+			<i class='bx bx-chevrons-up bx-fade-up'></i>
+		</div>
+		<!-- Back To Top End -->
+
+		<!-- jQuery first, then Bootstrap JS -->
+		{%include 'includes/indexscript.html'%}
+  	</body>
+</html>

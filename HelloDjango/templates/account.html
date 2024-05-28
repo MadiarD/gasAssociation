@@ -1,0 +1,451 @@
+<!doctype html>
+{% load static %}
+{% include 'includes/head.html' %}
+{%if lng == 'ru'%}
+        <!-- Page Title Start -->
+        <section class="page-title title-bg10">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <h2>Профиль</h2>
+                    <ul>
+                        <li>
+                            <a href="{%url 'home_page'%}">Главная</a>
+                        </li>
+                        <li>Профиль</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- Page Title End -->
+
+        <!-- Account Area Start -->
+        <section class="account-section ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="account-information">
+                            <div class="profile-thumb">
+                                {%if user.profile.profile_picture %}
+                                <img src="/media/{{user.profile.profile_picture}}" alt="account holder image">
+                                {%else%}
+                                <img src="{% static 'assets/img/account.jpg'%}" alt="account holder image">
+                                {%endif%}
+                                <h3>{{user.username}}</h3>
+                                <p>{{user.email}}</p>
+                            </div>
+
+                            <ul>
+                                <li>
+                                    <a href="#" class="active">
+                                        <i class='bx bx-user'></i>
+                                        Мой профиль
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{%url 'calculation'%}">
+                                        <i class='bx bxs-file-doc'></i>
+                                        Мой показание
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="{%url 'messages'%}">
+                                        <i class='bx bx-envelope'></i>
+                                        Сообщение
+                                    </a>
+                                </li>
+                                
+                                {% comment %} <li>
+                                    <a href="#">
+                                        <i class='bx bx-lock-alt' ></i>
+                                        Сменить пароль
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class='bx bx-coffee-togo'></i>
+                                        Удалить учетную запись
+                                    </a>
+                                </li> {% endcomment %}
+                                <li>
+                                    
+                                    <a href="#" onclick="logout()">
+                                        <i class='bx bx-log-out'></i>
+                                        <button type="submit" >Выход </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="account-details">
+                            <h3>Основная информация</h3>
+                            <form class="basic-info" method="post" action="{%url 'save_inf'%}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ваше Имя</label>
+                                            <input type="text" name="first_name" class="form-control" value="{{user.first_name}}" placeholder="Ваша имя">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ваша Фамилия</label>
+                                            <input type="text" name="last_name" class="form-control" placeholder="Ваша Фамилия" value="{{user.last_name}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ваша Почта</label>
+                                            <input type="email" name = "email" class="form-control" placeholder="Ваша Почта" value = "{{user.email}}"> 
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ваш Номер</label>
+                                            <input type="tel" name = "phone_number" class="form-control" placeholder="Ваш Номер" value="{{user.profile.phone_number}}">
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="col-md-12">
+                                        
+                                        <button type="submit" class="account-btn">Сохранить</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <h3>Адрес</h3>
+                            <form class="-candidate-address" method="post" action="{%url 'save_address_inf'%}">
+                                <div class="row">
+                                    {% csrf_token %}
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Город</label>
+                                            <input type="text" name="city" class="form-control" placeholder="Город" value = "{{user.profile.city}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Пост Код</label>
+                                            <input type="number" name = "postal_code" class="form-control" placeholder="Почтовый индекс города" value="{{user.profile.postal_code}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label>Регион</label>
+                                        <select name="region" class="form-select" id="region">
+                                        {% for region in regions %}
+                                            <option value="{{ region.name}}" {% if user.profile.region and user.profile.region.id == region.id %}selected{% endif %}>
+                                                {{ region.name }}
+                                            </option>
+                                        {% endfor %}
+                                       
+                                        </select>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Улица</label>
+                                            <input type="text" name ="street" class="form-control" placeholder="Улица" value = "{{user.profile.street}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Дом</label>
+                                            <input type="text" name ="house" class="form-control" placeholder="Дом" value = "{{user.profile.house}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ваша Квартира</label>
+                                            <input type="text" name = "apartment" class="form-control" placeholder="Ваша Квартира" value = "{{user.profile.apartment}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        
+                                        <button type="submit" class="account-btn">Сохранить</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        
+                            {%comment%}
+                            <h3>Social links</h3>
+                            <form class="candidates-sociak">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Facebook</label>
+                                            <input type="text" class="form-control" placeholder="www.facebook.com/user">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Twitter</label>
+                                            <input type="number" class="form-control" placeholder="www.twitter.com/user">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Linkedin</label>
+                                            <input type="text" class="form-control" placeholder="www.Linkedin.com/user">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Github</label>
+                                            <input type="text" class="form-control" placeholder="www.Github.com/user">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" class="account-btn">Edit</button>
+                                        <button type="submit" class="account-btn">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                            {%endcomment%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Account Area End -->
+        {%elif lng == 'kz'%}
+               <!-- Page Title Start -->
+               <section class="page-title title-bg10">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <h2>Профиль</h2>
+                        <ul>
+                            <li>
+                                <a href="{%url 'home_page'%}">Басты бет</a>
+                            </li>
+                            <li>Профиль</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="lines">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </section>
+            <!-- Page Title End -->
+    
+            <!-- Account Area Start -->
+            <section class="account-section ptb-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="account-information">
+                                <div class="profile-thumb">
+                                    {%if user.profile.profile_picture %}
+                                    <img src="/media/{{user.profile.profile_picture}}" alt="account holder image">
+                                    {%else%}
+                                    <img src="{% static 'assets/img/account.jpg'%}" alt="account holder image">
+                                    {%endif%}
+                                    <h3>{{user.username}}</h3>
+                                    <p>{{user.email}}</p>
+                                </div>
+    
+                                <ul>
+                                    <li>
+                                        <a href="#" class="active">
+                                            <i class='bx bx-user'></i>
+                                            Менің профилім
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{%url 'calculation'%}">
+                                            <i class='bx bxs-file-doc'></i>
+                                            Менің көрсеткішім
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="{%url 'messages'%}">
+                                            <i class='bx bx-envelope'></i>
+                                            Хабарлама
+                                        </a>
+                                    </li>
+                                    
+                                    {% comment %} <li>
+                                        <a href="#">
+                                            <i class='bx bx-lock-alt' ></i>
+                                            Құпиясөз ауыстыру
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class='bx bx-coffee-togo'></i>
+                                            Есептік жазбаны жою
+                                        </a>
+                                    </li> {% endcomment %}
+                                    <li>
+                                        
+                                        <a href="#" onclick="logout()">
+                                            <i class='bx bx-log-out'></i>
+                                            <button type="submit" >Шығу </button>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-8">
+                            <div class="account-details">
+                                <h3>Негізгі ақпарат</h3>
+                                <form class="basic-info" method="post" action="{%url 'save_inf'%}">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Сіздің Атыңыз</label>
+                                                <input type="text" name="first_name" class="form-control" value="{{user.first_name}}" placeholder="Ваша имя">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Сіздің Тегіңіз</label>
+                                                <input type="text" name="last_name" class="form-control" placeholder="Ваша Фамилия" value="{{user.last_name}}" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Сіздің поштаңыз</label>
+                                                <input type="email" name = "email" class="form-control" placeholder="Ваша Почта" value = "{{user.email}}"> 
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Сіздің нөмеріңіз</label>
+                                                <input type="tel" name = "phone_number" class="form-control" placeholder="Ваш Номер" value="{{user.profile.phone_number}}">
+                                            </div>
+                                        </div>
+    
+                                        
+                                        <div class="col-md-12">
+                                            
+                                            <button type="submit" class="account-btn">Сақтау</button>
+                                        </div>
+                                    </div>
+                                </form>
+    
+                                <h3>Мекен-жай</h3>
+                                <form class="-candidate-address" method="post" action="{%url 'save_address_inf'%}">
+                                    <div class="row">
+                                        {% csrf_token %}
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Қала</label>
+                                                <input type="text" name="city" class="form-control" placeholder="Город" value = "{{user.profile.city}}">
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Пост Коды</label>
+                                                <input type="number" name = "postal_code" class="form-control" placeholder="Почтовый индекс города" value="{{user.profile.postal_code}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label>Аймақ</label>
+                                            <select name="region" class="form-select" id="region">
+                                            {% for region in regions %}
+                                                <option value="{{ region.name}}" {% if user.profile.region and user.profile.region.id == region.id %}selected{% endif %}>
+                                                    {{ region.name }}
+                                                </option>
+                                            {% endfor %}
+                                           
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Көше</label>
+                                                <input type="text" name ="street" class="form-control" placeholder="Улица" value = "{{user.profile.street}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Үй</label>
+                                                <input type="text" name ="house" class="form-control" placeholder="Дом" value = "{{user.profile.house}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Сіздің квартира нөмері</label>
+                                                <input type="text" name = "apartment" class="form-control" placeholder="Ваша Квартира" value = "{{user.profile.apartment}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            
+                                            <button type="submit" class="account-btn">Сақтау</button>
+                                        </div>
+                                    </div>
+                                </form>
+    
+                            
+                                {%comment%}
+                                <h3>Social links</h3>
+                                <form class="candidates-sociak">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Facebook</label>
+                                                <input type="text" class="form-control" placeholder="www.facebook.com/user">
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Twitter</label>
+                                                <input type="number" class="form-control" placeholder="www.twitter.com/user">
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Linkedin</label>
+                                                <input type="text" class="form-control" placeholder="www.Linkedin.com/user">
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Github</label>
+                                                <input type="text" class="form-control" placeholder="www.Github.com/user">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="account-btn">Edit</button>
+                                            <button type="submit" class="account-btn">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                {%endcomment%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Account Area End -->
+            {%endif%}
+		{% include 'includes/end.html' %}
+  	</body>
+</html>

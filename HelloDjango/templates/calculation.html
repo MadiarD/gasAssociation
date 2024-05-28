@@ -1,0 +1,233 @@
+<!doctype html>
+{% load static %}
+{% include 'includes/head.html' %}
+{%if lng == 'ru'%}
+        <!-- Account Area Start -->
+        <section class="account-section ptb-100">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-6">
+                        <div class="account-details">
+                            <h3>Лицевой счет {{user.payment_account.number}}</h3>
+                            <h5> {{user.payment_account.provider}}</h5>
+                            <form class="basic-info" method="post" action="{%url 'calculation'%}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Показатель 1</label>
+                                            <input type="text" id ="first" class="form-control" value="{{user.payment_account.meter_indicator}}" placeholder="0.0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Показатель 2</label>
+                                            <input type="text" id ="second" class="form-control" placeholder="0.0" value="{{user.payment_account.last_meter_indicator}}" >
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Цена за m3 </label>
+                                            <input type="text" id="price" class="form-control" value="{{user.payment_account.provider.detail.price_per_m3}}" placeholder="0.0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Сумма </label>
+                                            <input type="text" id="amount" class="form-control" placeholder="0.0" value="{{user.payment_account.last_meter_indicator}}" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        
+                                        <button type="submit" class="account-btn">Сохранить</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                          
+
+                        
+                        
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                                {% for i in receipt  %}
+                                <div class="job-card-two">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-1">
+                                            <div class="company-logo">
+                                                <a href="#"></a>
+                                                <img src="{% static 'assets/img/company-logo/8.png'%}" style="margin-bottom: 50%;" alt="logo">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="job-info">
+                                                <h3>
+                                                    <a href="#">Квитанция</a>
+                                                </h3>
+                                                <ul>                                          
+                                                    <li>
+                                                        <i class='bx bx-stopwatch' ></i>
+                                                        {{i.date}}
+                                                    </li>
+                                                </ul>
+                                                <span>{{i.status}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="theme-btn text-end">
+                                                {%if i.file%}
+                                                <a href="/media/{{i.file}}" class="default-btn" download>
+                                                    Скачать
+                                                </a>
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                </div>
+            </div>
+        </section>
+        <!-- Account Area End -->
+
+        {%elif lng == 'kz'%}
+                <!-- Account Area Start -->
+                <section class="account-section ptb-100">
+                    <div class="container">
+                        <div class="row">
+        
+        
+                            <div class="col-md-6">
+                                <div class="account-details">
+                                    <h3>Дербес шот {{user.payment_account.number}}</h3>
+                                    <h5> {{user.payment_account.provider}}</h5>
+                                    <form class="basic-info" method="post" action="{%url 'calculation'%}">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Көрсеткіш 1</label>
+                                                    <input disabled type="text" id ="first" name = "first" class="form-control" value="{{user.payment_account.meter_indicator}}" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Көрсеткіш 2</label>
+                                                    <input type="text" id ="second" name = "second" class="form-control" placeholder="0.0" value="{{user.payment_account.last_meter_indicator}}" >
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label> m3 бағасы</label>
+                                                    <input disabled type="text" id="price" name = "price" class="form-control" value="{{user.payment_account.provider.detail.price_per_m3}}" placeholder="0.0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Сомасы </label>
+                                                    <input type="text" id="amount" name = "amount" class="form-control" placeholder="0.0" value="{{user.payment_account.last_meter_indicator}}" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                        
+                                                <button type="submit" class="account-btn">Сақтау</button>
+                                            </div>
+        
+                                        </div>
+                                    </form>
+        
+                                  
+        
+                                
+                                
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                {% for i in receipt  %}
+                                <div class="job-card-two">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-1">
+                                            <div class="company-logo">
+                                                <a href="#"></a>
+                                                <img src="{% static 'assets/img/company-logo/8.png'%}" style="margin-bottom: 50%;" alt="logo">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="job-info">
+                                                <h3>
+                                                    <a href="#">Квитанция</a>
+                                                </h3>
+                                                <ul>                                          
+                                                    <li>
+                                                        <i class='bx bx-stopwatch' ></i>
+                                                        {{i.date}}
+                                                    </li>
+                                                </ul>
+                                                <span>{{i.status}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="theme-btn text-end">
+                                                 {%if i.file%}
+                                                <a href="/media/{{i.file}}" class="default-btn" download>
+                                                    Жүктеу
+                                                </a>
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+        
+                        </div>
+                    </div>
+                </section>
+                <!-- Account Area End -->
+        
+        {%endif%}
+		{% include 'includes/end.html' %}
+        <script>
+            function calculate(){
+                let first = document.getElementById('first').value;
+                let second = document.getElementById('second').value;
+                let price = document.getElementById('price').value;
+                let amount = document.getElementById('amount');
+                (second)?second = second:second = 0;
+                amount.value = Math.round((second - first) * price);
+            }
+            function calculate_amount(){
+                let first = parseFloat(document.getElementById('first').value);
+                let second = document.getElementById('second')
+                let price = parseFloat(document.getElementById('price').value);
+                let amount = parseFloat(document.getElementById('amount').value);
+                amount?amount = amount:amount = 0;
+                second.value = Math.round(amount / price + first)
+            }
+            
+            document.getElementById('first').addEventListener('input', function() {
+               calculate();
+            });
+            document.getElementById('second').addEventListener('input', function() {
+               calculate();
+            });
+            document.getElementById('price').addEventListener('input', function() {
+               calculate();
+            });
+            document.getElementById('amount').addEventListener('input', function() {
+                calculate_amount();
+             });
+            $('document').ready(()=>{
+                calculate()
+            })
+
+        </script>
+  	</body>
+</html>

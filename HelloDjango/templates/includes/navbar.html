@@ -1,0 +1,235 @@
+{% load static %}
+{% if lng == 'ru' %}
+<!-- Navbar Area Start -->
+		<div class="navbar-area">
+			<!-- Menu For Mobile Device -->
+			<div class="mobile-nav">
+				<a href="index.html" class="logo">
+					<img src="{%static 'assets/img/logoAssosation.png'%}" width="150" alt="logo">
+				</a>
+			</div>
+		
+			<!-- Menu For Desktop Device -->
+			<div class="main-nav">
+				<div class="container">
+					<nav class="navbar navbar-expand-lg navbar-light">
+
+						<a class="navbar-brand" href="{% url 'home_page' %}">
+							<img src="{%static 'assets/img/logoAssosation.png'%}" width="200" alt="logo">
+						</a>
+						<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+							<ul class="navbar-nav m-auto">
+								<li class="nav-item">
+									<a href="{% url 'home_page' %}" class="nav-link">Главная</a>
+								</li>
+								<li class="nav-item">
+									<a href="{% url 'about' %}" class="nav-link">О Нас</a>
+								</li>
+								<li class="nav-item">
+									<a href="{% url 'news' %}" class="nav-link">Новости</a>
+								</li>       
+                                <li class="nav-item">
+									<a href="{% url 'forum' %}" class="nav-link">Форум</a>
+								</li>       
+								<li class="nav-item">
+									<a href="#" class="nav-link dropdown-toggle ">Нормативные акты</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a href="{% url 'notification_docx' %}" class="nav-link">Уведомление</a>
+										</li>
+										<li class="nav-item">
+											<a href="{% url 'contract_docx' %}" class="nav-link">Договора</a>
+										</li>
+                                        <li class="nav-item">
+											<a href="{% url 'report_docx' %}" class="nav-link">Отчет</a>
+										</li>
+										<li class="nav-item">
+											<a href="{% url 'instruction_docx' %}" class="nav-link">Инструкция</a>
+										</li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+									<a href="{% url 'personal_blog' %}" class="nav-link">Личный блог</a>
+								</li> 
+								<li class="nav-item">
+									<a href="{% url 'contacts' %}" class="nav-link">Контакты</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0);" class="nav-link dropdown-toggle ">ru</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a href="javascript:void(0)" onclick="changeLanguage('kz')" class="nav-link">kz</a>
+										</li>
+										
+									</ul>
+								</li>
+								
+								{% if user.is_authenticated %}
+								<li class="nav-item" >
+									{% if user.profile.profile_picture %}
+									<a href="#" class="nav-link signin-btn">
+										<img style = "width:6vh; height:6vh; border-radius:3vh;" src = "/media/{{user.profile.profile_picture}}">
+									</a>
+									{%else%}
+									<a href="#" class="nav-link signin-btn">
+										<img style = "width:6vh; height:6vh; border-radius:3vh;" src = "{% static 'assets/img/account.jpg'%}">
+									</a>
+									{%endif%}
+									
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a href="{% url 'profile' %}" class="nav-link">Профиль</a>
+										</li>
+										
+										<li class="nav-item" >
+											<a href="#" onclick="logout()" class="nav-link">Выход</a>
+										</li>
+										
+									</ul>
+								</li>
+
+								
+								<div class="other-option" >
+									
+								</div>
+								<li class="nav-item" >
+									<p class="d-flex align-items-center" style="color: white;">{{  user.username }}</p>
+								</li>
+								{%endif%}
+							</ul>
+							
+							{% if not user.is_authenticated %}
+							<div class="other-option">
+								<a href="{% url 'register' %}" class="signup-btn">Регистрация</a>
+								<a href="{% url 'login' %}" class="signin-btn">Вход</a>
+							</div>
+							{% endif %}
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar Area End -->
+
+		{% elif lng == 'kz'%}
+		
+
+<!-- Navbar Area Start -->
+		<div class="navbar-area">
+			<!-- Menu For Mobile Device -->
+			<div class="mobile-nav">
+				<a href="index.html" class="logo">
+					<img src="{%static 'assets/img/logoAssosation.png'%}" width="150" alt="logo">
+				</a>
+			</div>
+		
+			<!-- Menu For Desktop Device -->
+			<div class="main-nav">
+				<div class="container" style="max-width:1428px;">
+					<nav class="navbar navbar-expand-lg navbar-light">
+
+						<a class="navbar-brand" href="{% url 'home_page' %}">
+							<img src="{%static 'assets/img/logoAssosation.png'%}" width="200" alt="logo">
+						</a>
+						<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+							<ul class="navbar-nav m-auto">
+								<li class="nav-item">
+									<a href="{% url 'home_page' %}" class="nav-link">Басты бет</a>
+								</li>
+								<li class="nav-item">
+									<a href="{% url 'about' %}" class="nav-link">Біз туралы</a>
+								</li>
+								<li class="nav-item">
+									<a href="{% url 'news' %}" class="nav-link">Жаңалықтар</a>
+								</li>       
+                                <li class="nav-item">
+									<a href="{% url 'forum' %}" class="nav-link">Форум</a>
+								</li>       
+								<li class="nav-item">
+									<a href="#" class="nav-link dropdown-toggle ">Нормативтік актілер</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a href="{% url 'notification_docx' %}" class="nav-link">Хабарландыру</a>
+										</li>
+										<li class="nav-item">
+											<a href="{% url 'contract_docx' %}" class="nav-link">Шарт</a>
+										</li>
+                                        <li class="nav-item">
+											<a href="{% url 'report_docx' %}" class="nav-link">Есеп беру</a>
+										</li>
+										<li class="nav-item">
+											<a href="{% url 'instruction_docx' %}" class="nav-link">Нұсқаулар</a>
+										</li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+									<a href="{% url 'personal_blog' %}" class="nav-link">Жеке блог</a>
+								</li> 
+								<li class="nav-item">
+									<a href="{% url 'contacts' %}" class="nav-link">Контактілер</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0);" class="nav-link dropdown-toggle ">kz</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a href="javascript:void(0)" onclick="changeLanguage('ru')" class="nav-link">ru</a>
+										</li>
+										
+									</ul>
+								</li>
+								{% if user.is_authenticated %}
+								<li class="nav-item" >
+									{% if user.profile.profile_picture %}
+									<a href="#" class="nav-link signin-btn">
+										<img style = "width:6vh; height:6vh; border-radius:3vh;" src = "/media/{{user.profile.profile_picture}}">
+									</a>
+									{%else%}
+									<a href="#" class="nav-link signin-btn">
+										<img style = "width:6vh; height:6vh; border-radius:3vh;" src = "{% static 'assets/img/account.jpg'%}">
+									</a>
+									{%endif%}
+									
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a href="{% url 'profile' %}" class="nav-link">Профиль</a>
+										</li>
+										
+										<li class="nav-item" >
+											<a href="#" onclick="logout()" class="nav-link">Шығу</a>
+										</li>
+										
+									</ul>
+								</li>
+
+								
+								<div class="other-option" >
+									
+								</div>
+								<li class="nav-item" >
+									<p class="d-flex align-items-center" style="color: white;">{{  user.username }}</p>
+								</li>
+								{%endif%}
+							</ul>
+							
+							{% if not user.is_authenticated %}
+							<div class="other-option">
+								<a href="{% url 'register' %}" class="signup-btn">Тіркеу</a>
+								<a href="{% url 'login' %}" class="signin-btn">Кіру</a>
+							</div>
+							{% endif %}
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar Area End -->
+		{%endif%}
+		
+		<script>
+			function changeLanguage(lang) {
+				console.log(111111);
+				document.cookie = `lng=${lang}`;
+				console.log(document.cookie);
+				location.reload();
+			}
+		</script>
